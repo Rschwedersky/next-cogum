@@ -1,0 +1,36 @@
+[debug] [2024-03-28T19:48:24.408Z] ----------------------------------------------------------------------
+[debug] [2024-03-28T19:48:24.411Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\camba\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2024-03-28T19:48:24.411Z] CLI Version:   13.6.0
+[debug] [2024-03-28T19:48:24.411Z] Platform:      win32
+[debug] [2024-03-28T19:48:24.411Z] Node Version:  v20.10.0
+[debug] [2024-03-28T19:48:24.411Z] Time:          Thu Mar 28 2024 16:48:24 GMT-0300 (Brasilia Standard Time)
+[debug] [2024-03-28T19:48:24.412Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-03-28T19:48:24.572Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-03-28T19:48:24.573Z] > authorizing via signed-in user (cambara.ro@gmail.com)
+[debug] [2024-03-28T19:48:24.716Z] java version "22" 2024-03-19
+
+[debug] [2024-03-28T19:48:24.716Z] Java(TM) SE Runtime Environment (build 22+36-2370)
+Java HotSpot(TM) 64-Bit Server VM (build 22+36-2370, mixed mode, sharing)
+
+[debug] [2024-03-28T19:48:24.737Z] Parsed Java major version: 22
+[info] i  emulators: Starting emulators: auth, functions, firestore {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore"}}
+[debug] [2024-03-28T19:48:24.751Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-03-28T19:48:24.751Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-03-28T19:48:24.751Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-03-28T19:48:24.751Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-03-28T19:48:24.752Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-03-28T19:48:24.757Z] [hub] writing locator at C:\Users\camba\AppData\Local\Temp\hub-cogum-react.json
+[debug] [2024-03-28T19:48:24.770Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-03-28T19:48:24.770Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-03-28T19:48:24.770Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mdatabase, hosting, pubsub, storage\u001b[22m"}}
+[debug] [2024-03-28T19:48:24.777Z] defaultcredentials: writing to file C:\Users\camba\AppData\Roaming\firebase\cambara_ro_gmail.com_application_default_credentials.json
+[debug] [2024-03-28T19:48:24.790Z] Setting GAC to C:\Users\camba\AppData\Roaming\firebase\cambara_ro_gmail.com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\camba\\AppData\\Roaming\\firebase\\cambara_ro_gmail.com_application_default_credentials.json"}}
+[debug] [2024-03-28T19:48:24.795Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/cogum-react/adminSdkConfig [none]
+[debug] [2024-03-28T19:48:25.274Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/cogum-react/adminSdkConfig 200
+[debug] [2024-03-28T19:48:25.274Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/cogum-react/adminSdkConfig {"projectId":"cogum-react","storageBucket":"cogum-react.appspot.com"}
+[debug] [2024-03-28T19:48:25.294Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-03-28T19:48:25.294Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2024-03-28T19:48:25.294Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\camba\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.4.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","cogum-react","--rules","C:\\Users\\camba\\next-cogum\\firestore.rules","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\camba\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.4.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"cogum-react\",\"--rules\",\"C:\\\\Users\\\\camba\\\\next-cogum\\\\firestore.rules\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
