@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { Item, ItemAccess } from "../api/items/route";
 import { cookies } from "next/headers";
+import DraggableGraph from "@/components/chart";
 
 export default async function UserPage() {
     const cookieStore = cookies();
@@ -45,9 +46,11 @@ export default async function UserPage() {
                         >
                             {item.access}
                         </span>
+                        
                     </div>
                 );
             })}
+            <DraggableGraph></DraggableGraph>
         </div>
     );
 }
