@@ -6,5 +6,6 @@ declare namespace NodeJS {
       readonly NEXT_PUBLIC_MQTT_CLIENTID: string;
       readonly NEXT_PUBLIC_MONGODB_URI: string;
       readonly API_URL: string;
+      readonly NEXT_PUBLIC_FIREBASE_CONFIG:string;
     }
   }

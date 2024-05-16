@@ -35,7 +35,7 @@ export default function NavBar() {
 
     const handleNavigation = () => {
         setLoading(true);
-        setTimeout(()=>setLoading(false),500) // Set loading state when navigating to a new page
+        setTimeout(()=>setLoading(false),1200) // Set loading state when navigating to a new page
       };
     
     
