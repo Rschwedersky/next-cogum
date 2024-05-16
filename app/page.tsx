@@ -10,8 +10,7 @@ export default async function Home() {
 
   return (
     <div>
-    
-        <LastMqtt ></LastMqtt>
+    <h1>teste</h1>
    
   
   </div>
