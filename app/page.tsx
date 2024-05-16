@@ -1,6 +1,5 @@
 
 import  mqtt from "mqtt";
-import useMqtt from "./lib/useMqtt";
 import { Sensor_data } from "./api/mongo-data/route";
 import LastMqtt from "@/components/last-mqtt";
 

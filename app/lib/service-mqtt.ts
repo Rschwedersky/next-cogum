@@ -17,5 +17,5 @@ export function connectToMQTTBroker(): MqttClient {
       client!.subscribe('Cogum Sensor Controller');
     });
   }
-  return client!;
+  return client;
 }
