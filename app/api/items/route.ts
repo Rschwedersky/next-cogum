@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
         const response = await firestoreCall;
         const items = response.docs.map((doc) => doc.data());
 
-        if (items.length <= 0) {
+        /* if (items.length <= 0) {
             const batch = firestore.batch();
             defaultItems.forEach((item) => {
                 const itemRef = firestore?.collection("items").doc();
@@ -100,9 +100,9 @@ export async function GET(request: NextRequest) {
             });
             batch.commit();
             return NextResponse.json(defaultItems);
-        }
+        } */
 
-        return NextResponse.json(items);
+        return NextResponse.json(!items);
     } catch (error) {
         return new NextResponse("Internal Error", { status: 500 });
     }
