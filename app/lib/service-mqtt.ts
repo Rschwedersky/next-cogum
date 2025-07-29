@@ -1,21 +1,30 @@
 import mqtt, { MqttClient } from 'mqtt';
 
-let client: MqttClient | null = null;
-
 export function connectToMQTTBroker(): MqttClient {
-  if (!client) {
-    client = mqtt.connect({
-      host: process.env.NEXT_PUBLIC_MQTT_URI,
-      port: 8883,
-      protocol: 'mqtts',
-      username: process.env.NEXT_PUBLIC_MQTT_USERNAME,
-      password: process.env.NEXT_PUBLIC_MQTT_PASSWORD
-    });
+  const uri = process.env.MQTT_URI || 'wss://daf2ed2d22014cc5821a43f3fdcf44a9.s1.eu.hivemq.cloud:8884/mqtt';
+  const options = {
+    clientId: process.env.MQTT_CLIENTID || 'next_cogum',
+    username: process.env.MQTT_USERNAME || '@Rshw',
+    password: process.env.MQTT_PASSWORD || '@Rshw123456789',
+    protocol: 'wss' as 'wss', // Use WebSocket for HiveMQ Cloud
+    port: 8884,
+  };
 
-    client!.on('connect', () => {
-      console.log('Connected to MQTT broker');
-      client!.subscribe('Cogum Sensor Controller');
-    });
+  if (!uri || !options.username || !options.password) {
+    throw new Error('MQTT configuration missing: URI, username, or password not set');
   }
+
+  const client = mqtt.connect(uri, options);
+
+  client.on('connect', () => {
+    console.log('Connected to MQTT broker');
+    client.subscribe('Cogum Sensor Controller', (err) => {
+      if (err) {
+        console.error('Failed to subscribe to Cogum Sensor Controller:', err);
+        client.end();
+      }
+    });
+  });
+
   return client;
 }

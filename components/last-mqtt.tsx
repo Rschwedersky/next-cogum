@@ -1,6 +1,6 @@
 "use client"
+import { Sensor_data } from "@/app/types/items";
 import React, { useEffect, useState } from "react";
-import { Sensor_data } from "../app/api/mongo-data/route";
 
 
 const LastMqtt = () => {

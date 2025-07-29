@@ -1,36 +1,55 @@
 import { connectToMQTTBroker } from '@/app/lib/service-mqtt';
-import mqtt from 'mqtt';
 import { NextRequest, NextResponse } from "next/server";
 
-let dataMqtt: any = undefined;
-let connected = false; 
+export const dynamic = 'force-dynamic'; // Prevent static generation
 
-const client = connectToMQTTBroker();
+export async function GET(request: NextRequest) {
+  let dataMqtt: any = null;
 
-client.on('message', (topic, message) => {
-  const data = JSON.parse(message.toString()); // Assuming JSON data format
-  dataMqtt = data;
-  // Store the data in localStorage (see next step)
-  //storeDataInLocalStorage(data);
-});
-
-export async function GET() {
   try {
-    await waitForDataMqtt();
-    if (dataMqtt){return NextResponse.json(dataMqtt);}
+    const client = connectToMQTTBroker();
 
+    // Wait for connection with a timeout
+    const connectPromise = new Promise<void>((resolve, reject) => {
+      client.on('connect', () => {
+        console.log('Connected to MQTT broker in /api/mqtt');
+        resolve();
+      });
+      client.on('error', (error) => {
+        client.end();
+        reject(new Error(`MQTT connection failed: ${error.message}`));
+      });
+    });
+
+    await Promise.race([
+      connectPromise,
+      new Promise((_, reject) => setTimeout(() => reject(new Error('MQTT connection timeout')), 5000)),
+    ]);
+
+    // Wait for a message with a timeout
+    dataMqtt = await new Promise((resolve, reject) => {
+      client.on('message', (topic, message) => {
+        try {
+          const data = JSON.parse(message.toString());
+          client.end(); // Close connection after receiving data
+          resolve(data);
+        } catch (error) {
+          client.end();
+          reject(new Error(`Failed to parse MQTT message: ${message}`));
+        }
+      });
+      setTimeout(() => {
+        client.end();
+        resolve(null); // Return null if no message is received
+      }, 10000); // 10-second timeout
+    });
+
+    if (dataMqtt) {
+      return NextResponse.json(dataMqtt);
+    }
+    return NextResponse.json({ message: "No MQTT data received" }, { status: 200 });
   } catch (error) {
-    return new NextResponse("Internal Error", { status: 500 });
+    console.error("MQTT error in /api/mqtt:", error);
+    return NextResponse.json({ error: "Failed to retrieve MQTT data" }, { status: 500 });
   }
 }
-
-function waitForDataMqtt() {
-    return new Promise<void>((resolve) => {
-      const interval = setInterval(() => {
-        if (dataMqtt) {
-          clearInterval(interval);
-          resolve();
-        }
-      }, 100); // Check every 100 milliseconds, you can adjust this value as needed
-    });
-  }

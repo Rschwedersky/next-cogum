@@ -1,19 +1,8 @@
+import { Item, ItemAccess } from "@/app/types/items";
 import { auth, firestore } from "@/firebase/server";
 import { DecodedIdToken } from "firebase-admin/auth";
 import { NextRequest, NextResponse } from "next/server";
 
-export enum ItemAccess {
-  PUBLIC = "PUBLIC",
-  USER = "USER",
-  PRO = "PRO",
-  ADMIN = "ADMIN",
-}
-
-export type Item = {
-  id: string;
-  title: string;
-  access: ItemAccess;
-};
 
 const defaultItems: Item[] = [
   { id: "item-1", title: "I am a public item", access: ItemAccess.PUBLIC },

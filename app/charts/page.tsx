@@ -2,10 +2,10 @@
 import { cookies } from "next/headers";
 import { auth } from "@/firebase/server";
 import { DecodedIdToken } from "firebase-admin/auth";
-import { Sensor_data } from "../api/mongo-data/route";
 import { Chart as ChartJS, LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Legend } from 'chart.js';
 import StaticChart, { ChartData } from "@/components/static-chart";
 import { Suspense } from "react";
+import { Sensor_data } from "../types/items";
 
 ChartJS.register(
     CategoryScale,
