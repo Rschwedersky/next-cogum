@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { Item, ItemAccess } from "../api/items/route";
+//import { Item, ItemAccess } from "../api/items/route";
 import { DecodedIdToken, UserRecord} from "firebase-admin/auth";
 import { auth } from "@/firebase/server";
 
@@ -46,7 +46,7 @@ export default async function AdminPage() {
         const usersJson = await userInfoResponse.json();
         if (usersJson && usersJson.length > 0) usersAll = usersJson;
     }
-    let items: Item[] = [];
+    /* let items: Item[] = [];
     
 
     const response = await fetch(`${process.env.API_URL}/api/items`, {
@@ -57,7 +57,7 @@ export default async function AdminPage() {
     if (response.ok) {
         const itemsJson = await response.json();
         if (itemsJson && itemsJson.length > 0) items = itemsJson;
-    }
+    } */
 
     return (
         <div>
@@ -91,7 +91,7 @@ export default async function AdminPage() {
             <div>
             <div className="mt-4 mb-4 border-b border-gray-200"></div>
             <h1 className="text-white text-s mb-3">Items</h1>
-            {items.map((item) => {
+            {/* {items.map((item) => {
                 return (
                     <div
                         key={item.id}
@@ -113,7 +113,7 @@ export default async function AdminPage() {
                         </span>
                     </div>
                 );
-            })}
+            })} */}
             </div>
         </div>
     );

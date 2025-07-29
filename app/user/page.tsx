@@ -13,7 +13,7 @@ export default async function UserPage() {
         // return redirect("/");
     }
 
-    let items: Item[] = [];
+    /* let items: Item[] = [];
     const response = await fetch(`${process.env.API_URL}/api/items`, {
         headers: {
             Authorization: `Bearer ${authToken}`,
@@ -22,13 +22,13 @@ export default async function UserPage() {
     if (response.ok) {
         const itemsJson = await response.json();
         if (itemsJson && itemsJson.length > 0) items = itemsJson;
-    }
+    } */
 
     return (
         <div className="items-center w-1/2 pb-10 ">
             <h1 className="text-white text-xl mb-10">User Page</h1>
             <div>
-                {items.map((item) => {
+                {/* {items.map((item) => {
                     return (
                         <div
                             key={item.id}
@@ -51,7 +51,7 @@ export default async function UserPage() {
                             
                         </div>
                     );
-                })}
+                })} */}
             </div>
             <div className="">
                 <Chart></Chart>
