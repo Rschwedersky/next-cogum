@@ -44,8 +44,8 @@ export async function GET(request: NextRequest) {
             }
 
         const isAdmin = user?.admin;
-        console.log("user", user)
-        console.log("isAdmin", isAdmin)
+        /* console.log("user", user)
+        console.log("isAdmin", isAdmin) */
 
         let userInfo = null;
         if (user) {
@@ -90,7 +90,6 @@ export async function GET(request: NextRequest) {
                       .get();
 
         const response = await firestoreCall;
-        console.log("response",response.docs.map((doc) => doc.data()))
         const items = response.docs.map((doc) => doc.data());
 
         /* if (items.length <= 0) {
@@ -103,7 +102,7 @@ export async function GET(request: NextRequest) {
             return NextResponse.json(defaultItems);
         } */
 
-        return NextResponse.json({ items });
+        return NextResponse.json(!items);
     } catch (error) {
         return new NextResponse("Internal Error", { status: 500 });
     }

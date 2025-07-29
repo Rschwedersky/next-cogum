@@ -1,4 +1,4 @@
-
+"use client";
 import { Dispatch, SetStateAction, createContext, useContext, useState } from 'react';
 
 const LoadingContext = createContext<LoadingContextType | null>(null);

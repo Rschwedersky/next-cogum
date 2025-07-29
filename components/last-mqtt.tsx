@@ -1,4 +1,4 @@
-
+"use client"
 import React, { useEffect, useState } from "react";
 import { Sensor_data } from "../app/api/mongo-data/route";
 

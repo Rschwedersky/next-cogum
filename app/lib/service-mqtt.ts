@@ -6,6 +6,8 @@ export function connectToMQTTBroker(): MqttClient {
   if (!client) {
     client = mqtt.connect({
       host: process.env.NEXT_PUBLIC_MQTT_URI,
+      port: 8883,
+      protocol: 'mqtts',
       username: process.env.NEXT_PUBLIC_MQTT_USERNAME,
       password: process.env.NEXT_PUBLIC_MQTT_PASSWORD
     });
