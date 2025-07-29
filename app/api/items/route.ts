@@ -4,6 +4,8 @@ import { DecodedIdToken } from "firebase-admin/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 
+export const dynamic = 'force-dynamic'; // Prevent static generation
+
 const defaultItems: Item[] = [
   { id: "item-1", title: "I am a public item", access: ItemAccess.PUBLIC },
   { id: "item-2", title: "I am a public item", access: ItemAccess.PUBLIC },
@@ -11,7 +13,7 @@ const defaultItems: Item[] = [
   { id: "item-4", title: "I am a user item", access: ItemAccess.USER },
   { id: "item-5", title: "I am a pro item", access: ItemAccess.PRO },
   { id: "item-6", title: "I am a pro item", access: ItemAccess.PRO },
-  { id: "item-7", title: "I am a admin item", access: ItemAccess.ADMIN },
+  { id: "item-7", title: "I am an admin item", access: ItemAccess.ADMIN },
 ];
 
 export async function GET(request: NextRequest) {
@@ -20,10 +22,14 @@ export async function GET(request: NextRequest) {
       console.error("Firestore not initialized");
       return NextResponse.json({ error: "Internal Error: No Firestore" }, { status: 500 });
     }
+    if (!auth) {
+      console.error("Auth not initialized");
+      return NextResponse.json({ error: "Internal Error: No Auth" }, { status: 500 });
+    }
 
     const authToken = request.headers.get("authorization")?.split("Bearer ")[1] || null;
     let user: DecodedIdToken | null = null;
-    if (auth && authToken) {
+    if (authToken) {
       try {
         user = await auth.verifyIdToken(authToken);
       } catch (error) {
@@ -64,17 +70,12 @@ export async function GET(request: NextRequest) {
       : firestore.collection("items").where("access", "==", ItemAccess.PUBLIC).get();
 
     const response = await firestoreCall;
-    let items = response.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    
+    let items = response.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Item));
+
     if (items.length === 0) {
       const batch = firestore.batch();
-      
       defaultItems.forEach((item) => {
-        if (!firestore) {
-        console.error("Firestore not initialized");
-        return NextResponse.json({ error: "Internal Error: No Firestore" }, { status: 500 });
-        }
-        const itemRef = firestore.collection("items").doc(item.id); // TypeScript is satisfied due to earlier check
+        const itemRef = firestore.collection("items").doc(item.id);
         batch.set(itemRef, item);
       });
       await batch.commit();
