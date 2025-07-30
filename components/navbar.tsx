@@ -53,11 +53,11 @@ export default function NavBar() {
     };
 
     return (
-        <div className="fixed top-12 left-0 w-full flex items-center justify-center">
-            <div className="flex items-center bg-slate-200/10 gap-2 py-1 px-2 rounded-lg border border-slate-300/10 shadow mb-12">
+        <div className="fixed top-4 left-0 w-full flex items-center justify-center z-50">
+            <div className="flex flex-col sm:flex-row items-center bg-slate-200/10 gap-2 sm:gap-4 py-2 sm:py-1 px-2 sm:px-4 rounded-lg border border-slate-300/10 shadow mb-4 sm:mb-12 max-w-[90%] sm:max-w-3xl mx-auto">
                 {auth.loading && (
                     <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        className="animate-spin h-4 w-4 sm:h-5 sm:w-5 text-white mx-auto sm:mx-0"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -78,23 +78,23 @@ export default function NavBar() {
                     </svg>
                 )}
                 {!auth.loading && auth.currentUser && !auth.isPro && !auth.isAdmin && (
-                    <div className="bg-pink-600 text-white text-sm font-semibold px-2 py-1 rounded-full">
+                    <div className="bg-pink-600 text-white text-xs sm:text-sm font-semibold px-2 py-1 rounded-full">
                         User
                     </div>
                 )}
                 {!auth.loading && auth.currentUser && auth.isPro && !auth.isAdmin && (
-                    <div className="bg-emerald-600 text-white text-sm font-semibold px-2 py-1 rounded-full">
+                    <div className="bg-emerald-600 text-white text-xs sm:text-sm font-semibold px-2 py-1 rounded-full">
                         Pro
                     </div>
                 )}
                 {!auth.loading && auth.currentUser && auth.isAdmin && (
-                    <div className="bg-orange-400 text-white text-sm font-semibold px-2 py-1 rounded-full">
+                    <div className="bg-orange-400 text-white text-xs sm:text-sm font-semibold px-2 py-1 rounded-full">
                         Admin
                     </div>
                 )}
                 {!auth.loading && !auth.currentUser && (
                     <button
-                        className="text-white text-sm font-semibold bg-orange-700 p-2 border-white/10 shadow rounded-md hover:bg-orange-900 transition mr-12"
+                        className="text-white text-xs sm:text-sm font-semibold bg-orange-700 p-2 sm:p-2 border-white/10 shadow rounded-md hover:bg-orange-900 transition w-full sm:w-auto sm:mr-12"
                         onClick={loginGoogle}
                         disabled={auth.loading}
                     >
@@ -103,7 +103,7 @@ export default function NavBar() {
                 )}
                 {!auth.loading && auth.currentUser && (
                     <button
-                        className="text-white text-sm font-semibold bg-gray-800 p-2 border-white/10 shadow rounded-md hover:bg-gray-900 transition"
+                        className="text-white text-xs sm:text-sm font-semibold bg-gray-800 p-2 sm:p-2 border-white/10 shadow rounded-md hover:bg-gray-900 transition w-full sm:w-auto"
                         onClick={logout}
                         disabled={auth.loading}
                     >
@@ -111,11 +111,11 @@ export default function NavBar() {
                     </button>
                 )}
                 {!auth.loading && auth.currentUser && (
-                    <div className="mr-12">
-                        <p className="text-white text-sm font-semibold">
+                    <div className="text-center sm:text-left sm:mr-12">
+                        <p className="text-white text-xs sm:text-sm font-semibold">
                             {auth.currentUser.displayName}
                         </p>
-                        <p className="text-gray-400 text-xs font-semibold">
+                        <p className="text-gray-400 text-xs font-semibold hidden sm:block">
                             {auth.currentUser.email}
                         </p>
                     </div>
@@ -124,7 +124,7 @@ export default function NavBar() {
                     <Link
                         href={"/"}
                         onClick={handleNavigation}
-                        className="text-white text-sm font-semibold p-2 hover:bg-slate-900 rounded-md transition"
+                        className="text-white text-xs sm:text-sm font-semibold p-2 sm:p-2 hover:bg-slate-900 rounded-md transition w-full sm:w-auto text-center"
                     >
                         Go to Home page
                     </Link>
@@ -133,7 +133,7 @@ export default function NavBar() {
                     <Link
                         href={"user"}
                         onClick={handleNavigation}
-                        className="text-white text-sm font-semibold p-2 hover:bg-slate-900 rounded-md transition"
+                        className="text-white text-xs sm:text-sm font-semibold p-2 sm:p-2 hover:bg-slate-900 rounded-md transition w-full sm:w-auto text-center"
                         prefetch
                     >
                         Go to User page
@@ -143,7 +143,7 @@ export default function NavBar() {
                     <Link
                         href={"charts"}
                         onClick={handleNavigation}
-                        className="text-white text-sm font-semibold p-2 hover:bg-slate-900 rounded-md transition"
+                        className="text-white text-xs sm:text-sm font-semibold p-2 sm:p-2 hover:bg-slate-900 rounded-md transition w-full sm:w-auto text-center"
                         prefetch
                     >
                         Go to Charts page
@@ -153,14 +153,14 @@ export default function NavBar() {
                     <Link
                         href={"admin"}
                         onClick={handleNavigation}
-                        className="text-white text-sm font-semibold p-2 hover:bg-slate-900 rounded-md transition"
+                        className="text-white text-xs sm:text-sm font-semibold p-2 sm:p-2 hover:bg-slate-900 rounded-md transition w-full sm:w-auto text-center"
                         prefetch
                     >
                         Go to Admin page
                     </Link>
                 )}
                 {error && (
-                    <p className="text-red-500 text-sm mt-2">{error}</p>
+                    <p className="text-red-500 text-xs sm:text-sm mt-2 text-center">{error}</p>
                 )}
             </div>
         </div>

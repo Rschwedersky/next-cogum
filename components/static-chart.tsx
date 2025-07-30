@@ -31,8 +31,16 @@ export interface ChartData {
   }
 
 const options:any = {
-responsive: true,
-aspectRatio:3.5,
+  scales: {
+    y: {
+        min: 80, // Optional: Set suggested minimum
+        max: 100, // Adjust this value to match your highest data point
+        ticks: {
+        // forces step size to be 50 units
+        stepSize: 1
+        }
+    },
+    },
 animations: {
     tension: {
       duration: 1000,
@@ -40,8 +48,8 @@ animations: {
       from: 0,
       to: 1,
       loop: false
-    }}
-/* plugins: {
+    }},
+plugins: {
     legend: {
     position: 'top',
     },
@@ -49,26 +57,16 @@ animations: {
     display: true,
     text: 'Humidity', // Set your desired title
     },
-    scales: {
-    y: {
-        min: 0, // Optional: Set suggested minimum
-        max: 110, // Adjust this value to match your highest data point
-        ticks: {
-        // forces step size to be 50 units
-        stepSize: 1
-        }
-    },
-    },
-}, */
+},
 };
 
 const StaticChart = ({ chartData }: { chartData: ChartData }) => {
   return (
-    <Suspense fallback={<div className='animate-spin'>adadaa</div>}>
+    
     <div className='bg-orange-50 rounded-lg'>
-      <Line data={chartData} options={options} />
+      <Line data={chartData} options={options}/>
     </div>
-    </Suspense>
+
   );
 };
 

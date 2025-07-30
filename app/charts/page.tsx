@@ -173,9 +173,9 @@ export default async function ChartsPage() {
     
     return (
         
-        <div className="items-center w-4/6 h-full">
-            <h1 className="text-white text-xl mb-10">Charts Page</h1>
-            <div className="pb-10">
+        <div className="items-center w-full h-full rounded-lg sm:p-4 pt-20">
+            {/* <h1 className="text-white text-xl mb-10">Charts Page</h1>
+            <div className="pb-10"> */}
             
       <>
         <Suspense fallback={<p>Loading feed...</p>}>
@@ -184,7 +184,7 @@ export default async function ChartsPage() {
       </>
    
             
-            </div>   
+            {/* </div> */}   
         </div>
     );
 };
