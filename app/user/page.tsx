@@ -27,11 +27,11 @@ export default function UserPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        if (!process.env.NEXT_PUBLIC_API_URL) {
-          throw new Error("NEXT_PUBLIC_API_URL is not defined");
+        if (!process.env.API_URL) {
+          throw new Error("API_URL is not defined");
         }
-        console.log("Fetching MQTT data from:", `${process.env.NEXT_PUBLIC_API_URL}/api/mqtt`);
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/mqtt`, {
+        console.log("Fetching MQTT data from:", `${process.env.API_URL}/api/mqtt`);
+        const response = await fetch(`${process.env.API_URL}/api/mqtt`, {
           cache: "no-store",
         });
         if (!response.ok) {
