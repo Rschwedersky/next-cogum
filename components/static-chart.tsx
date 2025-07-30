@@ -34,7 +34,7 @@ const options:any = {
   scales: {
     y: {
         min: 80, // Optional: Set suggested minimum
-        max: 100, // Adjust this value to match your highest data point
+        max: 102, // Adjust this value to match your highest data point
         ticks: {
         // forces step size to be 50 units
         stepSize: 1
